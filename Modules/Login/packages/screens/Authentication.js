@@ -11,10 +11,12 @@ import {
   Platform
 } from 'react-native'
 
-import styles from '../../assets/styles/Authentication.styl'
+import { Button } from 'react-native-paper'
 
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
+
+import styles from '../../assets/styles/Authentication.styl'
 
 const bg = require('../../assets/bg.png')
 
@@ -80,30 +82,31 @@ const Authentication = () => {
                 }]
               }
             ]}>
-            <Animated.View style={{ opacity: buttonOpacity }}>
-              <TouchableOpacity onPress={() => onClick('login')} style={styles.buttons}>
-                <Text style={styles.buttonTitle}>SIGN IN</Text>
-              </TouchableOpacity>
-            </Animated.View>
-            <Animated.View style={{ opacity: buttonOpacity }}>
-              <TouchableOpacity onPress={onClick} style={styles.buttons}>
-                <Text style={styles.buttonTitle}>REGISTER</Text>
-              </TouchableOpacity>
-            </Animated.View>
+            <Button
+              dark={true}
+              mode={'text'}
+              color={'#000'}
+              style={[styles.buttons]}
+              labelStyle={{ fontSize: 20, fontWeight: 'bold' }}
+              onPress={() => onClick('login')}
+            >
+              SIGN IN
+            </Button>
+            <Button
+              dark={true}
+              mode={'text'}
+              color={'#000'}
+              style={[styles.buttons]}
+              labelStyle={{ fontSize: 20, fontWeight: 'bold' }}
+              onPress={onClick}
+            >
+              REGISTER
+            </Button>
           </Animated.View>
           <Animated.View
             style={[
               StyleSheet.absoluteFillObject,
               styles.formContainer,
-              // {
-              //   top: null,
-              //   height: '33.3%',
-              //   opacity: buttonOpacity.interpolate({
-              //     inputRange: [0, 1],
-              //     outputRange: [1, 0],
-              //     extrapolate: 'clamp'
-              //   })
-              // },
               {
                 transform: [{
                   translateY: buttonOpacity.interpolate({
