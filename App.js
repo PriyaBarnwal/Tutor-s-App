@@ -20,7 +20,7 @@ const App: () => React$Node = () => {
   return (
     <NavigationContainer>
       <HomeStack.Navigator>
-        <HomeStack.Screen name="Auth" component={AuthScreen} options={{headerShown: false}}/>
+        <HomeStack.Screen name="Auth" component={AuthScreen} options={{ headerShown: false }} />
       </HomeStack.Navigator>
     </NavigationContainer>
   )
