@@ -6,8 +6,12 @@ import {
   Text,
   TouchableOpacity,
   Animated,
-  Dimensions
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native'
+
+import authStyle from '../../assets/styles/AuthScreen.styl'
 
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
@@ -39,9 +43,13 @@ const AuthScreen = () => {
 
   return (
     <>
-      <View style={{flex:1, justifyContent: 'flex-end'}}>
+      <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+      style={{...authStyle.flexOne}}
+      >
+      <View style={{...authStyle.mainView}}>
         <Animated.View style={{
-          ...styles.bgContainer, 
+          ...authStyle.bgContainer, 
           transform: [{
             translateY: buttonOpacity.interpolate({
               inputRange: [0, 1],
@@ -50,7 +58,7 @@ const AuthScreen = () => {
             }),
           }]
         }}>
-          <Image source={bg} style={styles.bg}/>
+          <Image source={bg} style={authStyle.bg}/>
         </Animated.View>
         <Animated.View style={{
           ...styles.buttonsView,
@@ -63,19 +71,22 @@ const AuthScreen = () => {
           }]
         }}>
           <Animated.View style={{opacity: buttonOpacity}}>
-            <TouchableOpacity onPress={()=>onClick('login')} style={styles.buttons}>
-              <Text style={styles.buttonTitle}>SIGN IN</Text>
+            <TouchableOpacity onPress={()=>onClick('login')} style={authStyle.buttons}>
+              <Text style={authStyle.buttonTitle}>SIGN IN</Text>
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{opacity: buttonOpacity}}>
-            <TouchableOpacity onPress={onClick} style={styles.buttons}>
-              <Text style={styles.buttonTitle}>REGISTER</Text>
+            <TouchableOpacity onPress={onClick} style={authStyle.buttons}>
+              <Text style={authStyle.buttonTitle}>REGISTER</Text>
             </TouchableOpacity>
           </Animated.View>
         </Animated.View>
         <Animated.View
           style={{
+            ...StyleSheet.absoluteFillObject,
             ...styles.formContainer,
+            top: null,
+            height: '33.3%',
             opacity: buttonOpacity.interpolate({
               inputRange: [0,1],
               outputRange: [1,0],
@@ -84,7 +95,7 @@ const AuthScreen = () => {
             transform: [{
               translateY: buttonOpacity.interpolate({
                 inputRange: [0,1],
-                outputRange: [0, (Dimensions.get('window').height)/3],
+                outputRange: [-(Dimensions.get('window').height/10), (Dimensions.get('window').height)/3],
                 extrapolate: 'clamp'
               })
             }]
@@ -94,50 +105,22 @@ const AuthScreen = () => {
           {isSignUp ? <SignupForm onFormChange={onFormChange}/>: null}
         </Animated.View>
       </View>
+      </KeyboardAvoidingView>
     </>
   )
 }
 
-const styles = StyleSheet.create({
-  bgContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    height: '100%',
-    width: '100%'
-  },
-  bg: {
-    flex: 1,
-    height: null,
-    width: null
+const styles = StyleSheet.create({ 
+  formContainer: {
+    top: null,
+    height: '33.3%',
+    justifyContent: 'center',
+    backgroundColor: '#F3F3F3',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   buttonsView: {
     height: '33.3%'
-  },
-  buttons: {
-    backgroundColor: `rgba(0,0,0,0.7)`,
-    height: 70,
-    marginHorizontal: 20,
-    marginVertical: 10,
-    borderRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#000000',
-    shadowOffset: { width: 2, height: 5 },
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
-    elevation: 3
-  },
-  buttonTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff'
-  }, 
-  formContainer: {
-    ...StyleSheet.absoluteFillObject,
-    top: null,
-    height: '33.3%',
-    justifyContent: 'center'
   }
 })
 

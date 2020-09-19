@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native'
 import UserInput from '../../../UIkit/components/UserInput'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-
+import signupStyl from '../../assets/styles/Signup.styl'
 const SignupForm = (props) => {
   let [formData, setFormData] = useState({email: '', password: '', confirmPassword: ''}) 
 
@@ -35,13 +35,13 @@ const SignupForm = (props) => {
         textContentType="password"
         secureTextEntry={true}
       />
-      <TouchableOpacity style={{...styles.buttons}}>
-        <Text style={styles.buttonTitle}>SIGN UP</Text>
+      <TouchableOpacity style={{...signupStyl.buttons}}>
+        <Text style={signupStyl.buttonTitle}>SIGN UP</Text>
       </TouchableOpacity>
-      <View style={styles.extraText}>
+      <View style={signupStyl.extraText}>
       <Text>Already a User?</Text> 
       <TouchableOpacity onPress={props.onFormChange}>
-        <Text style={styles.link}>Sign In!</Text>
+        <Text style={signupStyl.link}>Sign In!</Text>
       </TouchableOpacity>
       </View>
       </View>
