@@ -12,7 +12,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import AuthScreen from './Modules/Login/packages/screens/AuthScreen'
+import Authentication from './Modules/Login/packages/screens/Authentication'
 
 const HomeStack = createStackNavigator()
 
@@ -20,7 +20,7 @@ const App: () => React$Node = () => {
   return (
     <NavigationContainer>
       <HomeStack.Navigator>
-        <HomeStack.Screen name="Auth" component={AuthScreen} options={{ headerShown: false }} />
+        <HomeStack.Screen name="Auth" component={Authentication} options={{ headerShown: false }} />
       </HomeStack.Navigator>
     </NavigationContainer>
   )

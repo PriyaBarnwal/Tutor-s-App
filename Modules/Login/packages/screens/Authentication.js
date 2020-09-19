@@ -11,14 +11,14 @@ import {
   Platform
 } from 'react-native'
 
-import authStyle from '../../assets/styles/AuthScreen.styl'
+import styles from '../../assets/styles/Authentication.styl'
 
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 
 const bg = require('../../assets/bg.png')
 
-const AuthScreen = () => {
+const Authentication = () => {
   let buttonOpacity = useState(new Animated.Value(1))[0]
   let [isLogin, setLogin] = useState(false)
   let [isSignUp, setSignup] = useState(false)
@@ -45,12 +45,12 @@ const AuthScreen = () => {
     <>
       <KeyboardAvoidingView
         behavior={Platform.OS == "ios" ? "padding" : "height"}
-        style={authStyle.flexOne}
+        style={styles.flexOne}
       >
-        <View style={authStyle.mainView}>
+        <View style={styles.mainView}>
           <Animated.View
             style={[
-              authStyle.bgContainer,
+              styles.bgContainer,
               {
                 transform: [{
                   translateY: buttonOpacity.interpolate({
@@ -64,12 +64,12 @@ const AuthScreen = () => {
           >
             <Image
               source={bg}
-              style={authStyle.bg}
+              style={styles.bg}
             />
           </Animated.View>
           <Animated.View
             style={[
-              authStyle.buttonsView,
+              styles.buttonsView,
               {
                 transform: [{
                   translateY: buttonOpacity.interpolate({
@@ -81,20 +81,20 @@ const AuthScreen = () => {
               }
             ]}>
             <Animated.View style={{ opacity: buttonOpacity }}>
-              <TouchableOpacity onPress={() => onClick('login')} style={authStyle.buttons}>
-                <Text style={authStyle.buttonTitle}>SIGN IN</Text>
+              <TouchableOpacity onPress={() => onClick('login')} style={styles.buttons}>
+                <Text style={styles.buttonTitle}>SIGN IN</Text>
               </TouchableOpacity>
             </Animated.View>
             <Animated.View style={{ opacity: buttonOpacity }}>
-              <TouchableOpacity onPress={onClick} style={authStyle.buttons}>
-                <Text style={authStyle.buttonTitle}>REGISTER</Text>
+              <TouchableOpacity onPress={onClick} style={styles.buttons}>
+                <Text style={styles.buttonTitle}>REGISTER</Text>
               </TouchableOpacity>
             </Animated.View>
           </Animated.View>
           <Animated.View
             style={[
               StyleSheet.absoluteFillObject,
-              authStyle.formContainer,
+              styles.formContainer,
               // {
               //   top: null,
               //   height: '33.3%',
@@ -125,4 +125,4 @@ const AuthScreen = () => {
   )
 }
 
-export default AuthScreen
+export default Authentication
