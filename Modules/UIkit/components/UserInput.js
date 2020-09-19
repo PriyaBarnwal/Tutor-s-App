@@ -26,6 +26,7 @@ export default UserInput
 const styles = StyleSheet.create({
   input: {
     flex: 1,
+    minHeight: 40,
     paddingTop: 10,
     paddingRight: 10,
     paddingBottom: 10,
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
+    minHeight: 40,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

@@ -3,12 +3,14 @@ import {View, StyleSheet, TouchableOpacity, Text} from 'react-native'
 import UserInput from '../../../UIkit/components/UserInput'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
+import loginStyl from '../../assets/styles/Login.styl'
+
 const LoginForm = (props) => {
   let [formData, setFormData] = useState({email: '', password: ''}) 
 
   return (
     <>
-      <View style={{flex:1, alignItems: 'center', marginVertical: 20}}>
+      <View style={{flex:1, alignItems: 'center', marginVertical: 20, justifyContent: 'flex-start'}}>
         <UserInput
           icon={<MaterialCommunityIcons name="account" color="grey" size={26} />}
           value={formData.email}
@@ -62,6 +64,7 @@ const styles = StyleSheet.create({
     color: '#fff'
   }, 
   extraText: {
+    display: 'flex',
     flexDirection: 'row',
     marginBottom: 40,
   },
