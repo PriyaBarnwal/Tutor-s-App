@@ -6,32 +6,24 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import 'react-native-gesture-handler'
+import React from 'react'
 
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+
+import Authentication from './Modules/Login/packages/screens/Authentication'
+
+const HomeStack = createStackNavigator()
 
 const App: () => React$Node = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <View>
-          <Text>
-            Tutor's App
-          </Text>
-        </View>
-      </SafeAreaView>
-    </>
-  );
-};
+    <NavigationContainer>
+      <HomeStack.Navigator>
+        <HomeStack.Screen name="Auth" component={Authentication} options={{ headerShown: false }} />
+      </HomeStack.Navigator>
+    </NavigationContainer>
+  )
+}
 
-const styles = StyleSheet.create({
-});
-
-export default App;
+export default App
